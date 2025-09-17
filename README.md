@@ -1,26 +1,31 @@
 # Busy2Vyapar Converter
 
-🚀 A simple open-source tool to convert **Busywin exported master files** (Party & Item) into **Vyapar importable Excel files**.
+Convert Busywin exported masters (Party, Item) into Vyapar importable Excel files.
 
----
+## Features
+- Party Master conversion
+  - Name, Contact, Address, GSTIN, Opening Balance (Dr/Cr handled), Opening Date
+- Item Master conversion
+  - Item Name, HSN, Sale/Purchase Price, Opening Stock, Tax Rate, etc.
+- Output format matches Vyapar's sample import headers
+- Invalid emails blanked automatically
 
-## ✨ Features
-- **Party Master Conversion**
-  - Fields: Name, Contact No, Address, GSTIN, Opening Balance (Dr/Cr handled), Opening Date
-- **Item Master Conversion**
-  - Fields: Item Name, HSN, Sale/Purchase Price, Opening Stock Quantity, Tax Rate
-- Automatic cleanup:
-  - Invalid emails are blanked
-  - Dr/Cr balances converted to numeric (+/-)
-  - Auto Item Codes generated if missing
-- Output format matches Vyapar’s official import template.
+## Usage
+1. Install Python 3.10+ and libraries from `requirements.txt`
+2. Run command:
+   ```
+   python converter_vyapar.py party PARTYVP.csv Vyapar_Parties.xlsx
+   python converter_vyapar.py item ITEMVP.csv Vyapar_Items.xlsx
+   ```
+3. Import generated Excel files into Vyapar Desktop (recommended).
 
----
+## Build EXE
+To build a standalone Windows executable:
+```
+pip install pyinstaller
+pyinstaller --onefile --noconsole --name Busy2VyaparSep25 converter_vyapar.py
+```
+Resulting EXE will be in `dist/Busy2VyaparSep25.exe`.
 
-## 📦 Requirements
-- Python 3.10 or higher
-- Libraries: `pandas`, `openpyxl`
-
-Install dependencies:
-```bash
-pip install -r requirements.txt
+## License
+MIT License
